@@ -1,14 +1,14 @@
 <div class="jumbotron center">
-     <h1>Student Portal</h1>
+    <%= image_tag("ccen.jpg", :alt => "academia edificadores de naciones") %><p>
 
-     A short description about the portal. I guess something like Signup to keep track of your students assignments and scores?
+     Welcome to Nation Builders student portal. Sign up to keep track of your childs assignments and progress.
 
      <% if user_signed_in? %>
           
      <% else %>
        <p>
-         <%= link_to "Log in", new_user_session_path, class: "btn btn-default btn-lg" %>
-         <%= link_to "Sign up", new_user_registration_path, class: "btn btn-primary btn-lg" %>
+         <%= link_to "Log in", new_user_session_path, class: "btn btn-default" %>
+         <%= link_to "Sign up", new_user_registration_path, class: "btn btn-primary" %>
        </p>
   <% end %>  
 </div>
