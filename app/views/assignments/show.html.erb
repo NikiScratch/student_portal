@@ -16,7 +16,18 @@
 <%= comments.description %> Posted by <%= current_user.first_name%><p>
 <% end %>
 
-<%=@assignment.id%>
-<p>
-<%= link_to 'New', new_comment_path(:assignment_id =>@assignment.id) %> |<%= link_to 'Edit', edit_assignment_path(@assignment) %> |
+<h2>Add a comment:</h2>
+<%= form_for([@assignment, @assignment.comments.build]) do |f| %>
+  <p>
+ 
+    <%= f.label :description %><br>
+    <%= f.text_area :description %>
+  </p>
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>
+
+
+<%= link_to 'Edit', edit_assignment_path(@assignment) %> |
 <%= link_to 'Back', assignments_path %>
