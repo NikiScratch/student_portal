@@ -1,5 +1,5 @@
  class CommentsController < ApplicationController
- before_action :set_pin, only: [:show, :edit, :update, :destroy]
+ before_action :set_comment, only: [:show, :edit, :update, :destroy]
 
   def index
     @comments = Comment.all
@@ -8,15 +8,17 @@
   def show
   end
 
+
   def new
-    @comment = Comment.new
+    assignment_id=Assignment.find(params[:assignment_id])
+    @comment = @assignment.comments.build(assignment_id: assignment_id)
   end
 
   def edit
   end
 
   def create
-    @comment = Comment.new(pin_params)
+    @comment = current_user.comments.build(pin_params)
     if @comment.save
       redirect_to @comment, notice: 'Pin was successfully created.'
     else
@@ -44,7 +46,12 @@
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
-    def pin_params
-      params.require(:pin).permit(:description)
+    def comments_params
+      params.require(:comment).permit(:description)
     end
+
+    def find_assignment
+    @assignment = Assignment.find(params[:assignment_id])
+
+  end
 end

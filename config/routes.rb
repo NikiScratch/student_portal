@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  resources :schedules
+
+  resources :subjects
+
+  resources :assignments
+
   resources :comments
 
   devise_for :users
