@@ -18,12 +18,9 @@
   end
 
   def create
-    @comment = current_user.comments.build(pin_params)
-    if @comment.save
-      redirect_to @comment, notice: 'Pin was successfully created.'
-    else
-      render action: 'new'
-    end
+    @assignment = Assignment.find(params[:assignment_id])
+    @comment = @assignment.comments.create(comment_params)
+    redirect_to assignment_path(@assignment)
   end
 
   def update
