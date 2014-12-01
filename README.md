@@ -1,3 +1,1 @@
-#One month rails
-
-This is a pinterest sample app for [*ONe month rails*](http://onemonth.com)
+A client portal for nation builders academy providing students with access to their assignments/homework per class.
