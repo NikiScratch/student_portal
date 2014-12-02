@@ -1,28 +1,18 @@
 <p id="notice"><%= notice %></p>
 
-  
-<p>
-  <strong>Name:</strong>
-  <%= @subject.name %>
-</p>
-
-<p>
-  <strong>Schedule:</strong>
-  <%= @subject.schedule_id %>
-</p>
-
-<p>
-  <strong>Teacher:</strong>
-  <%= @subject.teacher_id %>
-</p>
-
-
-
-
 <p><strong>Assignments for <%= @subject.name %></strong></p>
-<table class="table table-bordered">
+
+
+<table class="table table-hover">
+
+
 <% @subject.assignments.each do |assignments| %>
-<li><%= assignments.description %> <strong>Created on </strong><%= assignments.created_at.strftime("%m/%d/%Y %I:%M%p")  %></li>
+  <tr>
+    <td><%= assignments.description %></td>
+    <td> <strong>Created on </strong><%= assignments.created_at.strftime("%m/%d/%Y %I:%M%p")  %></td>
+    <td><%= link_to 'View', assignments %>|<%= link_to 'Edit', edit_assignment_path(assignments) %>| <%= link_to 'Delete', assignments, method: :delete, data: { confirm: 'Are you sure?' } %>
+  </td>
+  </tr>
 <%#= link_to 'Delete', comments, method: :delete, data: { confirm: 'Are you sure?' } %>
 <% end %>
 
@@ -38,10 +28,6 @@
     <%= f.submit %>
 </div>
 <% end %>
-
-
-
-
 
 
 <%#= link_to 'Edit', edit_subject_path(@subject) %> |

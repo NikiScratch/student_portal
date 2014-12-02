@@ -1,6 +1,6 @@
 <h1>Listing subjects</h1>
 
-<table>
+<table class="table table-hover">
   <thead>
     <tr>
       <th>Name</th>
@@ -18,9 +18,9 @@
         <td><%= subject.teacher_id %></td>
         <td><%= subject.assignments.count %> assignments </td>
         <p>
-        <td><%= link_to 'Show', subject %></td>
-        <td><%= link_to 'Edit', edit_subject_path(subject) %></td>
-        <td><%= link_to 'Destroy', subject, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'View', subject %>|
+        <%= link_to 'Edit', edit_subject_path(subject) %>|
+        <%= link_to 'Delete', subject, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </p>
       </tr>
     <% end %>

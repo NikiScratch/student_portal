@@ -1,0 +1,11 @@
+<table class="table table-hover">
+    
+   
+    <% @assignment.comments.each do |comments| %>
+     <tr><td><%= comments.description %> </td><td>Posted by <p><%= @comments_id %></td>
+    <%#= link_to 'Delete', comments, method: :delete, data: { confirm: 'Are you sure?' } %>
+    </tr>
+    <% end %>
+
+    
+</table>

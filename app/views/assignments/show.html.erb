@@ -1,31 +1,17 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Assignment:</strong>
+  <h1>Assignment for <%= @assignment.subject.name %> class</h1><p>
+  <strong>Description:</strong>
   <%= @assignment.description %>
-</p>
-
-<p>
-  <strong>Class:</strong>
-  <%= @assignment.subject.name %>
 </p>
 
 <p><strong>Please type in your response below.</strong></p>
 
-<% @assignment.comments.each do |comments| %>
-<%= comments.description %> Posted by <p><%= @comments_id %>
-<%#= link_to 'Delete', comments, method: :delete, data: { confirm: 'Are you sure?' } %>
-<% end %>
 
-<%= form_for([@assignment, @assignment.comments.build]) do |f| %>
-  <p>
- <div class="field">
-    <%= f.text_area :description %>
-</div>
-  <div class="actions">
-    <%= f.submit %>
-</div>
-<% end %>
 
+
+<%= render 'assignments/comments' %>
+<%= render 'assignments/create_comments' %>
 
 <%= link_to 'Back', assignments_path %>

@@ -1,0 +1,9 @@
+<%= form_for([@assignment, @assignment.comments.build]) do |f| %>
+  <p>
+ <div class="field">
+    <%= f.text_area :description %>
+</div>
+  <div class="actions">
+    <%= f.submit %>
+</div>
+<% end %>

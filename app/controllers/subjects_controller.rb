@@ -13,6 +13,9 @@ class SubjectsController < ApplicationController
   end
 
   def new
+#@schedule = Schedule.find(params[:schedule_id])
+#    @subjects = @schedule.subjects.create(subject_params)
+
     @subject = Subject.new
     respond_with(@subject)
   end

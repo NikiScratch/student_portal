@@ -1,6 +1,6 @@
 <h1>Listing assignments</h1>
 
-<table>
+<table class="table table-hover">
   <thead>
     <tr>
       <th>Description</th>
@@ -15,15 +15,14 @@
         <td><%= assignment.description %></td>
         <td><%= assignment.subject.name %></td>
         <td></td>
-        <td><%= link_to 'Show', assignment %></td>
-        <td><%= link_to 'Edit', edit_assignment_path(assignment) %></td>
-        <td><%= link_to 'Destroy', assignment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'View', assignment %>|
+        <%= link_to 'Edit', edit_assignment_path(assignment) %>|
+        <%= link_to 'Delete', assignment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<br>
 
-#needs to go to subject page first
-<%= link_to 'New Assignment', new_assignment_path %>
+<!-- needs to go to subject page first -->
+<%#= link_to 'New Assignment', new_assignment_path %>

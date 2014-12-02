@@ -19,6 +19,7 @@ class AssignmentsController < ApplicationController
 
     @subject = Subject.find(params[:subject_id])
     @assignment = @subject.assignments.create(assignment_params)
+
     #@comment.user_id = current_user.id
   end
 
