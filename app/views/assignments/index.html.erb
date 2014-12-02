@@ -13,7 +13,8 @@
     <% @assignments.each do |assignment| %>
       <tr>
         <td><%= assignment.description %></td>
-        <td><%= assignment.subject_id %></td>
+        <td><%= assignment.subject.name %></td>
+        <td></td>
         <td><%= link_to 'Show', assignment %></td>
         <td><%= link_to 'Edit', edit_assignment_path(assignment) %></td>
         <td><%= link_to 'Destroy', assignment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -24,4 +25,5 @@
 
 <br>
 
+#needs to go to subject page first
 <%= link_to 'New Assignment', new_assignment_path %>

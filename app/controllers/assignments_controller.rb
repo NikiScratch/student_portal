@@ -13,17 +13,29 @@ class AssignmentsController < ApplicationController
   end
 
   def new
-    @assignment = Assignment.new
-    respond_with(@assignment)
+    #@assignment = Assignment.new
+    #respond_with(@assignment)
+
+
+    @subject = Subject.find(params[:subject_id])
+    @assignment = @subject.assignments.create(assignment_params)
+    #@comment.user_id = current_user.id
   end
 
   def edit
   end
 
   def create
-    @assignment = Assignment.new(assignment_params)
-    @assignment.save
-    respond_with(@assignment)
+    #@assignment = Assignment.new(assignment_params)
+    #@assignment.save
+    #respond_with(@assignment)
+
+     @subject = Subject.find(params[:subject_id])
+    @assignment = @subject.assignments.create(assignment_params)
+    #@assignment.user_id = current_user.id
+    redirect_to assignment_path(@assignment)
+
+
   end
 
   def update

@@ -10,8 +10,11 @@
 
 
   def new
-    assignment_id=Assignment.find(params[:assignment_id])
-    @comment = @assignment.comments.build(assignment_id: assignment_id)
+    @assignment = Assignment.find(params[:assignment_id])
+    @comment = @assignment.comments.create(comment_params)
+    @comment.user_id = current_user.id
+    
+    #redirect_to assignment_path(@assignment)
   end
 
   def edit
@@ -20,6 +23,7 @@
   def create
     @assignment = Assignment.find(params[:assignment_id])
     @comment = @assignment.comments.create(comment_params)
+    @comment.user_id = current_user.id
     redirect_to assignment_path(@assignment)
   end
 
@@ -32,8 +36,12 @@
   end
 
   def destroy
+    @assignment = Assignment.find(params[:assignment_id])
+    @comment = @assignment.comments.find(params[:id])
     @comment.destroy
-    redirect_to comment_url
+    redirect_to assignment_path(@assignment)
+    # @comment.destroy
+    # redirect_to comment_url
   end
 
   private
@@ -43,7 +51,7 @@
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
-    def comments_params
+    def comment_params
       params.require(:comment).permit(:description)
     end
 
