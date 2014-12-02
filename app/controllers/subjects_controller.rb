@@ -5,7 +5,7 @@ class SubjectsController < ApplicationController
 
   def index
     @subjects = Subject.all
-    respond_with(@subjects)
+    respond_with(@subject)
   end
 
   def show
