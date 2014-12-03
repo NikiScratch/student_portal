@@ -14,7 +14,7 @@ end
   get "about"=>"pages#about"
   get "comments"=>"comments#show"
   #get "accept" => 'comment#accept_assignment'
-  match 'accept', to: 'comment#accept_assignment', via: [:get, :post]
+  match 'accept', to: 'comments#accept_assignment', via: [:get, :post]
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

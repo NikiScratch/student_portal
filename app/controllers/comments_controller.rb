@@ -36,7 +36,7 @@
   end
 
   def accept_assignment
-    @comment=Comment.find(params[:id])
+    @comment=Comment.find(params[:comment_id])
     accept(@comment)
     redirect_to assignment_path(@assignment)
   end
