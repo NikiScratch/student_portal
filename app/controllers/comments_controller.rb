@@ -29,10 +29,22 @@
 
   def update
     if @comment.update(comment_params)
-      redirect_to @comment, notice: 'Pin was successfully updated.'
+      redirect_to @comment, notice: 'Comment was successfully updated.'
     else
       render action: 'edit'
     end
+  end
+
+  def accept_assignment
+    @comment=Comment.find(params[:id])
+    accept(@comment)
+    redirect_to assignment_path(@assignment)
+  end
+
+  def decline_assignment
+    @comment=Comment.find(params[:id])
+    @comment.approved=0
+    @comment.save
   end
 
   def destroy

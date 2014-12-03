@@ -3,7 +3,17 @@
 <p>
   <strong>User:</strong>
   <%= @schedule.user_id %>
+  <% @schedule.save %>
 </p>
+<p><strong>Schedule</p></strong>
 
+<table class="table table-hover">
+<%#= schedule.user.name%>
+<% @schedule.subjects.each do |subject|%>
+<tr><td><%= subject.name%></td>
+</tr>
+<%end%>
+<%#= render 'schedules/create_userschedule'%>
+</table>
 <%= link_to 'Edit', edit_schedule_path(@schedule) %> |
 <%= link_to 'Back', schedules_path %>

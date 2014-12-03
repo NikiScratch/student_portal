@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141202011929) do
+ActiveRecord::Schema.define(version: 20141203001447) do
 
   create_table "assignments", force: true do |t|
     t.string   "description"
@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(version: 20141202011929) do
     t.datetime "updated_at"
     t.integer  "assignment_id"
     t.integer  "user_id"
+    t.integer  "approved"
   end
 
   add_index "comments", ["assignment_id"], name: "index_comments_on_assignment_id"

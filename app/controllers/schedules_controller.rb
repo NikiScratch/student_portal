@@ -13,7 +13,12 @@ class SchedulesController < ApplicationController
   end
 
   def new
+    
+
     @schedule = Schedule.new
+    
+    #@user = User.find(params[:user_id])
+    #@schedule = @user.schedules.create(schedule_params)
     respond_with(@schedule)
   end
 

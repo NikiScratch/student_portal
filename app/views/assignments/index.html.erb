@@ -13,7 +13,7 @@
     <% @assignments.each do |assignment| %>
       <tr>
         <td><%= assignment.description %></td>
-        <td><%= assignment.subject.name %></td>
+        <td><%= link_to assignment.subject.name, subject_path(assignment.subject.id) %></td>
         <td></td>
         <td><%= link_to 'View', assignment %>|
         <%= link_to 'Edit', edit_assignment_path(assignment) %>|

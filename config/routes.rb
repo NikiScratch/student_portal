@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  resources :schedules
+  resources :schedules do
+    resources :subjects
+  end
 
   resources :subjects do
   resources :assignments
@@ -10,7 +12,9 @@ end
   devise_for :users
   root "pages#home"
   get "about"=>"pages#about"
-   get "comments"=>"comments#ashow"
+  get "comments"=>"comments#show"
+  get "accept" => 'comment#accept_assignment'
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
