@@ -12,10 +12,12 @@ class SubjectsController < ApplicationController
     respond_with(@subject)
   end
 
-  def new
-#@schedule = Schedule.find(params[:schedule_id])
-#    @subjects = @schedule.subjects.create(subject_params)
+  # def new
+  #   @schedule = Schedule.find(params[:schedule_id])
+  #   @subjects = @schedule.subjects.create(subject_params)
+  # end
 
+  def new
     @subject = Subject.new
     respond_with(@subject)
   end
@@ -27,6 +29,12 @@ class SubjectsController < ApplicationController
     @subject = Subject.new(subject_params)
     @subject.save
     respond_with(@subject)
+  end
+
+  def newsubject
+    @schedule = Schedule.find(params[:schedule_id])
+    @subject = @schedule.subjects.create(subject_params)
+    redirect_to schedule_path(@schedule)
   end
 
   def update

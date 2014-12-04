@@ -15,6 +15,7 @@ end
   get "comments"=>"comments#show"
   #get "accept" => 'comment#accept_assignment'
   match 'accept', to: 'comments#accept_assignment', via: [:get, :post]
+  #match 'newsubject', to: 'subjects#new_button', via: [:get, :post]
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
