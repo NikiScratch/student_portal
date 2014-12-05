@@ -1,5 +1,5 @@
 class Subject < ActiveRecord::Base
-	has_many :schedule
+	belongs_to :schedule
 	has_many :assignments
 	
 	has_many :users, through: :schedule

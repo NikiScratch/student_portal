@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :schedules
-  has_many :subjects, through: :schedule
-  has_many :assignments, through: :classes
+  has_many :subjects, through: :schedules
+  has_many :assignments, through: :subjects
   has_many :comments, through: :assignments
 end

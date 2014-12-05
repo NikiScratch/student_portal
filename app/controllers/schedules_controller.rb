@@ -14,7 +14,6 @@ class SchedulesController < ApplicationController
 
   def new
     
-
     @schedule = Schedule.new
     
     #@user = User.find(params[:user_id])
@@ -27,6 +26,9 @@ class SchedulesController < ApplicationController
 
   def create
     @schedule = Schedule.new(schedule_params)
+    
+    @subject = @schedule.subjects.create(subject_params)
+
     @schedule.save
     respond_with(@schedule)
   end
@@ -41,12 +43,19 @@ class SchedulesController < ApplicationController
     respond_with(@schedule)
   end
 
+  def addsubject
+    @schedule = Schedule.find(schedule_params)
+    @subject = @schedule.subject_id(params[:subject_id])
+    @schedule.save
+  end
+
   private
     def set_schedule
       @schedule = Schedule.find(params[:id])
     end
 
     def schedule_params
-      params.require(:schedule).permit(:user_id)
+      params.require(:schedule).permit(:subject_id, :id, :user_id)
+      #params.require(:schedule).permit(:user_id)
     end
 end

@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
   resources :schedules do
     resources :subjects
+#     collection do
+# post :addsubject =>"schedules#addsubject"
+# end 
   end
 
   resources :subjects do
@@ -13,8 +16,16 @@ end
   root "pages#home"
   get "about"=>"pages#about"
   get "comments"=>"comments#show"
+
+
+
+
+
+  #post "addsubject"=>"schedules#addsubject"
   #get "accept" => 'comment#accept_assignment'
-  match 'accept', to: 'comments#accept_assignment', via: [:get, :post]
+  #Need a route for accepting comments
+  #match 'accept', to: 'comments#accept_assignment', via: [:get, :post]
+  
   #match 'newsubject', to: 'subjects#new_button', via: [:get, :post]
   
   # The priority is based upon order of creation: first created -> highest priority.

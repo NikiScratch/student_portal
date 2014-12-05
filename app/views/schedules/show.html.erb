@@ -1,14 +1,25 @@
 <p id="notice"><%= notice %></p>
 
-<p>
+<p><% @subject=Subject.all %>
   <strong>User:</strong>
   <%= @schedule.user_id %>
   <% @schedule.save %>
 </p>
 
 Add Classes to schedule<- want to make this a button that will enter class I select based on the subjects I have created<p>
-
-
+<table class="table table-hover">
+<%#= schedule.user.name%>
+<% @subject.each do |subject|%>
+<tr><td><%= subject.name%></td>
+    <tr><td><%= link_to "Add" addsubject_path(:schedule=> [:subject_id =>subject.id, :id => @schedule.id, :user_id => current_user.id]), :method => 'post'%></td>
+</tr>
+<%end%>
+<%#= simple_form_for @schedule do |f| %>
+ 
+    <%#= f.association :subjects, :include_blank => false %>
+  
+  <%#= f.button :submit %>
+<%# end %>
 
 <p><strong>Classes</p></strong>
 
