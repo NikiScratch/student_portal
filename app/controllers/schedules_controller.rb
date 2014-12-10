@@ -34,8 +34,14 @@ class SchedulesController < ApplicationController
   end
 
   def update
-    @schedule.update(schedule_params)
-    respond_with(@schedule)
+    params[:schedule][:subject_ids] ||= []
+    @schedule = Schedule.find(params[:id])
+    if @schedule.update_attricutes(params[:schedule])
+      flash[:notice]= 'Added succesfully.'
+      redirect_to :action => 'show', :id => @schedule
+    #@schedule.update(schedule_params)
+    #respond_with(@schedule)
+  end
   end
 
   def destroy

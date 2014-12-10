@@ -3,7 +3,7 @@
    
     <% @assignment.comments.each do |comments| %>
      <tr><td><%= comments.description %> </td>
-     	<td>Posted by <p><%= @assignment.user.email %></td>
+     	<td>Posted by <p><%= comments_student_id %></td>
      	<td><%= @comments_approved %></td>
      	<td><%#= button_to 'Approve', accept_path(:comments_id => comments.id, :assignment_id => @assignment)%></td>
     <%#= link_to 'Delete', comments, method: :delete, data: { confirm: 'Are you sure?' } %>

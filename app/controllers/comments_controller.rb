@@ -12,7 +12,9 @@
   def new
     @assignment = Assignment.find(params[:assignment_id])
     @comment = @assignment.comments.create(comment_params)
-    @comment.user_id = current_user.id
+    #Add if Teacher? save to teacher id if student student_id
+
+    @comment.student_id = current_user.id
     
     #redirect_to assignment_path(@assignment)
   end
@@ -23,8 +25,10 @@
   def create
     @assignment = Assignment.find(params[:assignment_id])
     @comment = @assignment.comments.build(comment_params)
-    @comment.user_id = current_user.id
+    #if student view student comments if teacher same logic
+    @comment.student_id = current_user.id
     @comment.save
+    flash[:notice] = "Thanks for your comment!"
     redirect_to assignment_path(@assignment)
   end
 
@@ -37,18 +41,14 @@
   end
 
   def accept_assignment
-    
     @comment=Comment.find(params[:comments_id])
     accept(@comment)
     redirect_to assignment_comment_path(@comment)
-    
-
   end
 
   def decline_assignment
     @comment=Comment.find(params[:id])
-    @comment.approved=0
-    @comment.save
+    decline(@comment)
   end
 
   def destroy
@@ -56,8 +56,9 @@
     @comment = @assignment.comments.find(params[:id])
     @comment.destroy
     redirect_to assignment_path(@assignment)
-    # @comment.destroy
-    # redirect_to comment_url
+    #@comment = Comment.find(params[:comments_id])
+    #@comment.destroy
+    #redirect_to comment_url
   end
 
   private
@@ -72,7 +73,6 @@
     end
 
     def find_assignment
-    @assignment = Assignment.find(params[:assignment_id])
-
-  end
+      @assignment = Assignment.find(params[:assignment_id])
+    end
 end
