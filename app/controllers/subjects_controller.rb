@@ -1,6 +1,5 @@
 class SubjectsController < ApplicationController
   before_action :set_subject, only: [:show, :edit, :update, :destroy]
-
   respond_to :html
 
   def index
@@ -11,11 +10,6 @@ class SubjectsController < ApplicationController
   def show
     respond_with(@subject)
   end
-
-  # def new
-  #   @schedule = Schedule.find(params[:schedule_id])
-  #   @subjects = @schedule.subjects.create(subject_params)
-  # end
 
   def new
     @subject = Subject.new

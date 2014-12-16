@@ -3,7 +3,6 @@ class SchedulesController < ApplicationController
   before_action :set_schedule, only: [:show, :edit, :update, :destroy]
   respond_to :html
 
-
   def index
     @schedules = Schedule.all
     respond_with(@schedules)
@@ -13,54 +12,32 @@ class SchedulesController < ApplicationController
     respond_with(@schedule)
   end
 
-
   def new
     @schedule = Schedule.new
-    #@user = User.find(params[:user_id])
-    #@schedule = @user.schedules.create(schedule_params)
     respond_with(@schedule)
   end
 
   def edit
   end
 
-
   def create
     @schedule = Schedule.new(schedule_params)
-    @subject = @schedule.subjects.create(subject_params)
+    #@subject = @schedule.subjects.create(subject_params)
     @schedule.save
     respond_with(@schedule)
   end
 
-
   def update
-<<<<<<< HEAD
+    #params[:schedule][:subject_ids] ||= []
+    #@schedule = Schedule.find(params[:id])
+    #if @schedule.update_attributes(params[:schedule])
+    #  flash[:notice]= 'Added succesfully.'
+    #  redirect_to :action => 'show', :id => @schedule
+      #end
+    @schedule.update(schedule_params)
+    respond_with(@schedule)
+  
 
-    params[:schedule][:subject_ids] ||= []
-
-    @schedule = Schedule.find(params[:id])
-
-    if @schedule.update_attricutes(params[:schedule])
-
-      flash[:notice]= 'Added succesfully.'
-
-      redirect_to :action => 'show', :id => @schedule
-
-    #@schedule.update(schedule_params)
-
-    #respond_with(@schedule)
-
-    end
-=======
-    params[:schedule][:subject_ids] ||= []
-    @schedule = Schedule.find(params[:id])
-    if @schedule.update_attricutes(params[:schedule])
-      flash[:notice]= 'Added succesfully.'
-      redirect_to :action => 'show', :id => @schedule
-    #@schedule.update(schedule_params)
-    #respond_with(@schedule)
-  end
->>>>>>> 9d6383a21c195d5f494e065f0394f8b2553a221c
   end
 
   def destroy
@@ -74,9 +51,6 @@ class SchedulesController < ApplicationController
     @schedule.save
   end
 
-
-
-
   private
     def set_schedule
       @schedule = Schedule.find(params[:id])
@@ -88,5 +62,3 @@ class SchedulesController < ApplicationController
     end
 
 end
-
-

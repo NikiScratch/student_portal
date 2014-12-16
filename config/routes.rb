@@ -1,25 +1,27 @@
 Rails.application.routes.draw do
   resources :schedules do
     resources :subjects
-#     collection do
-# post :addsubject =>"schedules#addsubject"
-# end 
+      collection do
+      post :addsubject #=>"schedules#addsubject"
+    end 
   end
 
   resources :subjects do
   resources :assignments
 end
+
   resources :assignments do
   resources :comments
+    member do
+      post :accept_assignment
+  end    
 end
+
+
   devise_for :users
   root "pages#home"
   get "about"=>"pages#about"
   get "comments"=>"comments#show"
-
-
-
-
 
   #post "addsubject"=>"schedules#addsubject"
   #get "accept" => 'comment#accept_assignment'

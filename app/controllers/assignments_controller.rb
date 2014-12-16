@@ -31,7 +31,7 @@ class AssignmentsController < ApplicationController
     #@assignment.save
     #respond_with(@assignment)
 
-     @subject = Subject.find(params[:subject_id])
+    @subject = Subject.find(params[:subject_id])
     @assignment = @subject.assignments.create(assignment_params)
     #@assignment.user_id = current_user.id
     redirect_to assignment_path(@assignment)
@@ -49,6 +49,17 @@ class AssignmentsController < ApplicationController
     respond_with(@assignment)
   end
 
+  def accept_assignment
+    @comment=Comment.find(params[:comments_id])
+    accept(@comment)
+    redirect_to assignment_comment_path(@assignment)
+  end
+  
+  def decline_assignment
+    @comment=Comment.find(params[:id])
+    decline(@comment)
+    redirect_to assignment_comment_path(@comment)
+  end
 
   private
     def set_assignment
