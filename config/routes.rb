@@ -16,6 +16,7 @@ end
   root "pages#home"
   get "about"=>"pages#about"
   get "comments"=>"comments#show"
+  match 'addsubject', to: 'schedules#addsubject', via: [:post, :get]
 
 
 

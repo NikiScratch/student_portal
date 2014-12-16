@@ -27,21 +27,21 @@ class SchedulesController < ApplicationController
   def create
     @schedule = Schedule.new(schedule_params)
     
-    @subject = @schedule.subjects.create(subject_params)
+    #@subject = @schedule.subjects.create(params[:subject_id])
 
     @schedule.save
     respond_with(@schedule)
   end
 
   def update
-    params[:schedule][:subject_ids] ||= []
-    @schedule = Schedule.find(params[:id])
-    if @schedule.update_attricutes(params[:schedule])
-      flash[:notice]= 'Added succesfully.'
-      redirect_to :action => 'show', :id => @schedule
-    #@schedule.update(schedule_params)
-    #respond_with(@schedule)
-  end
+    # params[:schedule][:subject_ids] ||= []
+    # @schedule = Schedule.find(params[:id])
+    # if @schedule.update_attricutes(params[:schedule])
+    #   flash[:notice]= 'Added succesfully.'
+    #   redirect_to :action => 'show', :id => @schedule
+    @schedule.update(schedule_params)
+    respond_with(@schedule)
+  #end
   end
 
   def destroy
@@ -49,11 +49,11 @@ class SchedulesController < ApplicationController
     respond_with(@schedule)
   end
 
-  def addsubject
-    @schedule = Schedule.find(schedule_params)
-    @subject = @schedule.subject_id(params[:subject_id])
-    @schedule.save
-  end
+  # def addsubject
+  #   @schedule = Schedule.find(:schedule_id)
+  #   @subject = @schedule.subjects.build(params[:subject_id])
+  #   @schedule.save
+  # end
 
   private
     def set_schedule
@@ -61,7 +61,8 @@ class SchedulesController < ApplicationController
     end
 
     def schedule_params
+      #
       params.require(:schedule).permit(:subject_id, :id, :user_id)
-      #params.require(:schedule).permit(:user_id)
+      #params.require(:schedule).permit(:subject_id)
     end
 end

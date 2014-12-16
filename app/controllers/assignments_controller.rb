@@ -33,7 +33,7 @@ class AssignmentsController < ApplicationController
 
      @subject = Subject.find(params[:subject_id])
     @assignment = @subject.assignments.create(assignment_params)
-    #@assignment.user_id = current_user.id
+    @assignment.student_id = current_user.id
     redirect_to assignment_path(@assignment)
 
 

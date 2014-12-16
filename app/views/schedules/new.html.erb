@@ -1,8 +1,15 @@
-<h1>New schedule</h1>
-
+<h1> New Schedule </h1>
 <%= render 'form' %>
+<strong>All available Classes</p></strong>
+<table class="table table-hover">
+<%#= schedule.user.name%>
+ <% @subject=Subject.all%>
+ <%=@schedule.id%>
+ <% @subject.each do |subject| %>
+<tr><td><%#= link_to subject.name, addsubject_path(:subject_id => subject.id) %></td>
+    <td><%= link_to subject.name, new_schedule_path(:subject_id =>subject.id, :schedule_id =>@schedule.id)%></td>
+<!-- ,:id => @schedule.id, :user_id => current_user.id -->
+<%end%>
+</tr>
 
-
-
-
-<%= link_to 'Back', schedules_path %>
+</table>
