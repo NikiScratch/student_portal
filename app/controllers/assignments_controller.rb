@@ -49,6 +49,7 @@ class AssignmentsController < ApplicationController
     respond_with(@assignment)
   end
 
+
   private
     def set_assignment
       @assignment = Assignment.find(params[:id])

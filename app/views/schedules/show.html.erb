@@ -1,98 +1,68 @@
 <p id="notice"><%= notice %></p>
 
+    <p><% @subject=Subject.all %>
+      <strong>User:</strong>
+      <%= @schedule.user_id %>
+      <% @schedule.save %>
+    </p>
+    
+    Add Classes to schedule<- want to make this a button that will enter class I select based on the subjects I have created<p>
+
+    <%# for subject in Subject.all %>
+
+    <div>
+    <%#= check_box_tag "schedule[subject_ids][]", subject.id, @schedule.subject.include?(subject) %>
+    <%#= subject.name %>
+    </div>
+    <% #end %>
 
 
+    <!-- <p><strong>All available Classes</p></strong> -->
 
-<p><% @subject=Subject.all %>
+    <%# for subject in Subject.all %>
+    <div>
+    <%#= check_box_tag "schedule[subject_ids][]", subject.id, @schedule.subject.include?(subject) %>
+    <%#= subject.name %>
+    </div>
+    <% #end %>
 
-  <strong>User:</strong>
+    <p><strong>All available Classes</p></strong>
 
-  <%= @schedule.user_id %>
+    <table class="table table-hover">
 
-  <% @schedule.save %>
+    <%#= schedule.user.name%>
+    <% @subject.each do |subject|%>
 
-</p>
+        <tr><td><%= subject.name%></td>
+        <td><%#= link_to "Add", addsubject_path(:schedule=> [:subject_id =>subject.id, :id => @schedule.id, :user_id => current_user.id]), :method => 'post'%></td>
+        <td><%#= link_to "Add", addsubject_path(:schedule=> [:subject_id =>subject.id, :id => @schedule.id, :user_id => current_user.id]), :method => 'post'%></td>
+        </tr>
 
-
-
-
-Add Classes to schedule<- want to make this a button that will enter class I select based on the subjects I have created<p>
-
-
-
-
-<%# for subject in Subject.all %>
-
-<div>
-
-  <%#= check_box_tag "schedule[subject_ids][]", subject.id, @schedule.subject.include?(subject) %>
-
-  <%#= subject.name %>
-
-</div>
-
-<% #end %>
-
-
-
-
-<p><strong>All available Classes</p></strong>
-
-<table class="table table-hover">
-
-<%#= schedule.user.name%>
-
-<% @subject.each do |subject|%>
-
-<tr><td><%= subject.name%></td>
-
-    <td><%#= link_to "Add", addsubject_path(:schedule=> [:subject_id =>subject.id, :id => @schedule.id, :user_id => current_user.id]), :method => 'post'%></td>
-
-</tr>
-
-<%end%>
+    <%end%>
 
 </table>
-
-
 
 
 <%#= simple_form_for @schedule do |f| %>
-
- 
-
     <%#= f.association :subjects, :include_blank => false %>
-
-  
-
   <%#= f.button :submit %>
-
 <%# end %>
 
+<p><strong>Classes in schedule</p></strong>
+    <table class="table table-hover">
 
+        <%#= schedule.user.name%>
 
+        <% @schedule.subjects.each do |subject|%>
 
-<p><strong>Classes</p></strong>
+        <tr><td><%= subject.name%></td>
 
+        </tr>
 
+    <%end%>
 
-
-<table class="table table-hover">
-
-<%#= schedule.user.name%>
-
-<% @schedule.subjects.each do |subject|%>
-
-<tr><td><%= subject.name%></td>
-
-</tr>
-
-<%end%>
-
-<%#= render 'schedules/create_userschedule'%>
-
-</table>
+    <%#= render 'schedules/create_userschedule'%>
+    </table>
 
 <%= link_to 'Edit', edit_schedule_path(@schedule) %> |
-
 <%= link_to 'Back', schedules_path %>

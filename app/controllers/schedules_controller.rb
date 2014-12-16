@@ -34,6 +34,7 @@ class SchedulesController < ApplicationController
 
 
   def update
+<<<<<<< HEAD
 
     params[:schedule][:subject_ids] ||= []
 
@@ -50,6 +51,16 @@ class SchedulesController < ApplicationController
     #respond_with(@schedule)
 
     end
+=======
+    params[:schedule][:subject_ids] ||= []
+    @schedule = Schedule.find(params[:id])
+    if @schedule.update_attricutes(params[:schedule])
+      flash[:notice]= 'Added succesfully.'
+      redirect_to :action => 'show', :id => @schedule
+    #@schedule.update(schedule_params)
+    #respond_with(@schedule)
+  end
+>>>>>>> 9d6383a21c195d5f494e065f0394f8b2553a221c
   end
 
   def destroy

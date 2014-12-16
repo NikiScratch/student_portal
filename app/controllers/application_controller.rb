@@ -7,4 +7,9 @@ class ApplicationController < ActionController::Base
   	comment.approved="1"
     comment.save
   end
+
+  def decline (comment)
+  	comment.approved="0"
+    comment.save
+  end
 end
