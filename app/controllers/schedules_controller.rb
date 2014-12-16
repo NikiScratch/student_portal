@@ -26,7 +26,6 @@ class SchedulesController < ApplicationController
 
   def create
     @schedule = Schedule.new(schedule_params)
-    
     @subject = @schedule.subjects.create(subject_params)
 
     @schedule.save
@@ -45,7 +44,7 @@ class SchedulesController < ApplicationController
 
   def addsubject
     @schedule = Schedule.find(schedule_params)
-    @subject = @schedule.subject_id(params[:subject_id])
+    @subject = @schedule.subjects.create(params[:subject_id])
     @schedule.save
   end
 
