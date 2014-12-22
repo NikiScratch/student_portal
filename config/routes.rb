@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   resources :schedules do
     resources :subjects
+    
 #     collection do
 # post :addsubject =>"schedules#addsubject"
 # end 
