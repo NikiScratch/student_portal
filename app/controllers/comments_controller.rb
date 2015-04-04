@@ -13,7 +13,6 @@
     @assignment = Assignment.find(params[:assignment_id])
     @comment = @assignment.comments.create(comment_params)
     #Add if Teacher? save to teacher id if student student_id
-
     @comment.student_id = current_user.id
     
     #redirect_to assignment_path(@assignment)
@@ -41,16 +40,15 @@
   end
 
   def accept_assignment
-    @comment=Comment.find(params[:comments_id])
-    accept(@comment)
-    redirect_to assignment_comment_path(@comment)
-  end
 
-  def decline_assignment
+    @assignment = Assignment.find(params[:assignment_id])
     @comment=Comment.find(params[:id])
-    decline(@comment)
-  end
+    one=1
+    @comment.accept
+    redirect_to assignment_path(@assignment)
 
+  end
+  
   def destroy
     @assignment = Assignment.find(params[:assignment_id])
     @comment = @assignment.comments.find(params[:id])

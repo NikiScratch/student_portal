@@ -1,27 +1,28 @@
 Rails.application.routes.draw do
   resources :schedules do
-    resources :subjects
+    resources :subjects do    
+    end 
     
-#     collection do
-# post :addsubject =>"schedules#addsubject"
-# end 
   end
 
   resources :subjects do
-  resources :assignments
-end
+    resources :assignments
+  end
+
   resources :assignments do
-  resources :comments
-end
+    resources :comments do
+      member do
+        post :accept_assignment
+      end
+    end    
+  end
+
+
   devise_for :users
   root "pages#home"
   get "about"=>"pages#about"
   get "comments"=>"comments#show"
-  match 'addsubject', to: 'schedules#addsubject', via: [:post, :get]
-
-
-
-
+  match 'addsubject', to: 'schedules#addsubject', via: [:post, :get], as: :addsubject
 
   #post "addsubject"=>"schedules#addsubject"
   #get "accept" => 'comment#accept_assignment'

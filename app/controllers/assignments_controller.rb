@@ -9,17 +9,15 @@ class AssignmentsController < ApplicationController
   end
 
   def show
+    #Schedule.find(params[:id])
     respond_with(@assignment)
   end
 
   def new
     #@assignment = Assignment.new
     #respond_with(@assignment)
-
-
     @subject = Subject.find(params[:subject_id])
     @assignment = @subject.assignments.create(assignment_params)
-
     #@comment.user_id = current_user.id
   end
 
@@ -27,16 +25,10 @@ class AssignmentsController < ApplicationController
   end
 
   def create
-    #@assignment = Assignment.new(assignment_params)
-    #@assignment.save
-    #respond_with(@assignment)
-
-     @subject = Subject.find(params[:subject_id])
+    @subject = Subject.find(params[:subject_id])
     @assignment = @subject.assignments.create(assignment_params)
     @assignment.student_id = current_user.id
     redirect_to assignment_path(@assignment)
-
-
   end
 
   def update
@@ -48,7 +40,6 @@ class AssignmentsController < ApplicationController
     @assignment.destroy
     respond_with(@assignment)
   end
-
 
   private
     def set_assignment

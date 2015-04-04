@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141207004451) do
+ActiveRecord::Schema.define(version: 20150404144134) do
 
   create_table "assignments", force: true do |t|
     t.string   "description"
@@ -26,9 +26,9 @@ ActiveRecord::Schema.define(version: 20141207004451) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "assignment_id"
+    t.integer  "teacher_id"
     t.integer  "student_id"
     t.integer  "approved"
-    t.integer  "teacher_id"
     t.integer  "rating"
   end
 
@@ -36,6 +36,13 @@ ActiveRecord::Schema.define(version: 20141207004451) do
 
   create_table "schedules", force: true do |t|
     t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "schedules_subjects", force: true do |t|
+    t.integer  "subject_id"
+    t.integer  "schedule_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -64,7 +71,6 @@ ActiveRecord::Schema.define(version: 20141207004451) do
     t.string   "first_name"
     t.string   "last_name"
     t.string   "full_name"
-    t.string   "type"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

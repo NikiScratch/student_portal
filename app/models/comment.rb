@@ -3,4 +3,9 @@ class Comment < ActiveRecord::Base
 	has_one :subject
 	belongs_to :student, :class_name => "User"
 	belongs_to :teacher, :class_name => "User"
+
+	def accept
+		update_attributes(approved: 1)
+
+	end
 end

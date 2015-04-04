@@ -12,23 +12,22 @@
     <% @assignment.comments.each do |comments| %>
      <tr><td><%= comments.description %> </td>
       <td><%= comments.rating %> </td>
-      <td>Posted by <p><%= comments.student.first_name %></td>
+      <td><%= comments.approved %> </td>
+      <td>Posted by <p><%#= comments.student.first_name %></td>
      	<td><%= comments.created_at.strftime("%x %I:%M %p") %></td>
       
       <td><%#= link_to 'Edit', edit_assignment_comment_path(comments) %>
       <td><%#= @comments.accept_assignment(:comment_id =>comment.id) %></td>
-     
-     	
-
-
-
       <td><%#= link_to 'Delete', comments.id, method: :destroy, data: { confirm: 'Are you sure?' } %></td>
-    
-
+      <td><%#= link_to 'Edit', edit_assignment_comment_path(comments.id) %>
+           
+     	<td><%= button_to 'Approve', accept_assignment_assignment_comment_path(:comments_id => comments.id, :assignment_id => @assignment)%></td>
+      <td>
+        
+      </td>
+      
     </tr>
-    <% end %>
-
-    
+    <% end %>    
 </table>
 
 <%#= render 'assignments/comments' %>
