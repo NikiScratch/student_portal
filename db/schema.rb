@@ -26,7 +26,6 @@ ActiveRecord::Schema.define(version: 20150404144134) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "assignment_id"
-    t.integer  "teacher_id"
     t.integer  "student_id"
     t.integer  "approved"
     t.integer  "rating"
