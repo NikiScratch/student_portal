@@ -42,10 +42,14 @@
   def accept_assignment
 
     @assignment = Assignment.find(params[:assignment_id])
-    @comment=Comment.find(params[:id])
-    one=1
-    @comment.accept
-    redirect_to assignment_path(@assignment)
+    @comment=Comment.find(params[:comments_id])
+  
+
+    @comment.update(approved: 1)
+
+    @comment.save
+    @comment.accept_assignment
+    redirect_to assignment_path(@assignment), notice: 'Comment was successfully updated.'
 
   end
   
