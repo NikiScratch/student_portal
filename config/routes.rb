@@ -13,6 +13,7 @@ Rails.application.routes.draw do
     resources :comments do
       member do
         post :accept_assignment
+        post :reject_assignment
       end
     end    
   end

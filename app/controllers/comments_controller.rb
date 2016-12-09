@@ -48,9 +48,33 @@
     @comment.update(approved: 1)
 
     @comment.save
-    @comment.accept_assignment
-    redirect_to assignment_path(@assignment), notice: 'Comment was successfully updated.'
+    #@comment.accept_assignment
 
+    if @comment.approved=1
+      redirect_to assignment_path(@assignment), notice: 'Comment was successfully accepted.'
+    else
+      redirect_to assignment_path(@assignment), notice: 'Comment was not updated.'
+    end
+  
+  end
+
+  def reject_assignment
+
+    @assignment = Assignment.find(params[:assignment_id])
+    @comment=Comment.find(params[:comments_id])
+  
+
+    @comment.update(approved: 0)
+
+    @comment.save
+    #@comment.accept_assignment
+
+    if @comment.approved=0
+      redirect_to assignment_path(@assignment), notice: 'Comment has been declined.'
+    else
+      redirect_to assignment_path(@assignment), notice: 'Oops, Did not go through.'
+    end
+  
   end
   
   def destroy

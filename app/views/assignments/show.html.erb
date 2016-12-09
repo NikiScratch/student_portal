@@ -24,6 +24,10 @@
      	<td><%= button_to 'Approve', accept_assignment_assignment_comment_path(:comments_id => comments.id, :assignment_id => @assignment)%></td>
       <td>
         
+
+        <td><%= button_to 'Reject', reject_assignment_assignment_comment_path(:comments_id => comments.id, :assignment_id => @assignment)%></td>
+      <td>
+
       </td>
       
     </tr>
