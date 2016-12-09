@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
-#ruby '2.1.3'
+ruby '2.3.0'
+
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.6'
@@ -25,7 +26,8 @@ gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0'
 gem 'devise', '~>3.4.1'
-gem 'cancancan'
+#gem 'cancancan'
+gem "pundit"
 gem 'simple_form'
 group :doc do
 # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
@@ -37,7 +39,7 @@ group :development, :test do
 end
 
 group :production do
-     gem 'pg'
+     #gem 'pg'
      gem 'rails_12factor'
 end
 # Use ActiveModel has_secure_password
@@ -52,4 +54,4 @@ end
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
-ruby "2.2.1"
+#ruby "2.2.1"
